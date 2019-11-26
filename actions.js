@@ -68,19 +68,22 @@ $(document).keydown(function(e) {
 		'right': {x: snake.head.x+1, y: snake.head.y},
 	}
 
-	var directions = {
-		'37': {action: snake.headLeft(), direction: 'left'},
-		'38': {action: snake.headUp(), direction: 'up'},
-		'39': {action: snake.headRight(), direction: 'right'},
-		'40': {action: snake.headDown(), direction: 'down'},
+	var buttons = {
+		'37': {action: snake.headLeft(), direction: 'left', restricted: 'right'},
+		'38': {action: snake.headUp(), direction: 'up', restricted: 'down'},
+		'39': {action: snake.headRight(), direction: 'right', restricted: 'left'},
+		'40': {action: snake.headDown(), direction: 'down', restricted: 'up'},
 	}
 
+
+	let button = buttons[e.keyCode];
+
 	
 
 	
-	if ( !(directions[e.keyCode] == undefined) ) {
-		currentDirection = directions[e.keyCode].direction;
-		$('#direction').html(directions[e.keyCode].direction);
+	if ( !(button == undefined) && !(currentDirection == button.restricted) ) {
+		currentDirection = button.direction;
+		//$('#direction').html(button.direction);
 
 		if (nextCells[currentDirection].x == cookieCell.x && nextCells[currentDirection].y == cookieCell.y) {
 			snake.yum(cookieCell);
@@ -91,7 +94,7 @@ $(document).keydown(function(e) {
 		}
 
 		else {
-			snake.update(directions[e.keyCode].action);
+			snake.update(button.action);
 
 		}
 
