@@ -18,42 +18,48 @@ class Snake {
 
 	// отрисовка змейки
 	render() {
-		let snake = [this.tail].concat(this.body).concat(this.head);
+		let snake = this.asArray();
 		snake.forEach(function(part, of, snake) {
 			$('#x' + part.x + 'y' + part.y).css('background', part.color);
 		});
 	}
 
 
+	// голова движется вниз
 	headDown() {
 		var headDown = new snakePart(this.head.x, this.head.y-1, this.head.color);
 		return headDown;
 	}
 
 
+	// голова движется вправо
 	headRight() {
 		var headRight = new snakePart(this.head.x+1, this.head.y, this.head.color);
 		return headRight;
 	}
 
 
+	// голова движется влево
 	headLeft() {
 		var headLeft = new snakePart(this.head.x-1, this.head.y, this.head.color);
 		return headLeft;
 	}
 
 
+	// голова движется вверх
 	headUp() {
 		var headUp = new snakePart(this.head.x, this.head.y+1, this.head.color);
 		return headUp;
 	}
 
 
+	// отбросить хвост - последнюю клетку (для движения)
 	dropTail() {
 		$('#x' + this.tail.x + 'y' + this.tail.y).css('background', 'white');
 	}
 
 
+	// обновление при движении
 	update(newHead) {
 		this.dropTail();
 		this.tail = this.body.shift();
@@ -63,10 +69,24 @@ class Snake {
 	}
 
 
-	grow(cell) {
+	// "съесть" печеньку / вырасти
+	yum(cell) {
 		let newCell = new snakePart(cell.x, cell.y, 'orange');
 		this.body.push(this.head);
 		this.head = newCell;
-		this.render();
+		this.render();		
 	}
+
+
+	// длина змейки
+	length() {
+		return this.asArray().length;
+	}
+
+
+	// змейка в виде массива
+	asArray() {
+		return [this.tail].concat(this.body).concat(this.head);
+	}
+
 }
