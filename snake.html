@@ -4,13 +4,18 @@
 	<title>Snake</title>
 	<meta charset="utf-8">
 	<script src="jquery.js" type="text/javascript"></script>
-	<script src="snake.js" type="text/javascript"></script>
 
 
 	<style type="text/css">
+		table {
+			border: 1px solid gold;
+			border-radius: 2px;
+		}
+
 		td {
 			width: 10px;
 			height: 10px;
+			border-radius: 2px;
 		}
 
 		.cookie {
@@ -18,25 +23,19 @@
 		}
 	</style>
 </head>
+
 <body>
-	<table id='table' border='1'>		
-	</table>
+	<div>
+		<table id='table'>		
+		</table>
 
-	<!-- <button id='stop'>stop</button>
-	<button id='cookie'>печенька</button> -->
+		<br>
+		<button id='start'>Старт</button><button id='restart'>Заново</button>
 
-	
-	<br>
-	<label>Координаты печеньки: </label><span id="cookieCell"></span>
-	<br>
-	<label>Длина змейки: </label><span id="snakeLength"></span>
-	<!-- <br>
-	<label>snake: </label><span id="snake"></span>
-	<br>
-	<label>currentDirection: </label><span id="direction"></span> -->
+		<br>
+		<label>Длина змейки: </label><span id="snakeLength"></span>
+	</div>
 
-
-
-	<script src="actions.js" type="text/javascript"></script>
+	<script src="snake.js" type="text/javascript"></script>
 </body>
 </html>
