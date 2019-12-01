@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Tetris</title>
-
+	<script src="base.js" type="text/javascript"></script>
 	<script src="tetris.js" type="text/javascript"></script>
 
 	<style type="text/css">
@@ -16,6 +16,19 @@
 			width: 15px;
 			height: 15px;
 			border-radius: 2px;
+			background: aliceblue;
+		}
+
+		.free {
+			background: aliceblue;
+		}
+
+		.tetrapiece {
+			background: black;
+		}
+
+		.blocked {
+			background: black;
 		}
 
 	</style>
@@ -23,7 +36,9 @@
 </head>
 <body>
 
-	<table id="tetris_field"></table>
+	<table id="tetris_field" class='table'></table>
+	<br>
+	<button id="stick">stick</button>
 
 </body>
 </html>
